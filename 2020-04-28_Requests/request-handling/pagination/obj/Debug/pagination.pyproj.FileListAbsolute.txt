@@ -1,0 +1,2 @@
+F:\Work\Netology\DJ-9\2020-04-28_Requests\request-handling\pagination\bin\Microsoft.PythonTools.WebRole.dll
+F:\Work\Netology\DJ-9\2020-04-28_Requests\request-handling\pagination\bin\wfastcgi.py
