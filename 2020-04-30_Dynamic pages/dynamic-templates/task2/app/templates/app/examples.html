@@ -1,0 +1,16 @@
+﻿{% extends 'app/base.html' %}
+{% load static %}
+{% load app_tags %}
+
+{% block nav_page %}{% set_page_context "examples" %}{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col s12">
+        <h1 class="col s12">Каталог компьютеров Apple</h1>
+        {% for item in items %}
+            {% include 'app/card.html' with card=item %}
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}

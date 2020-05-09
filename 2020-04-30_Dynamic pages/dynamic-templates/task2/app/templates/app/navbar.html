@@ -1,0 +1,16 @@
+
+{% load static %}
+{% load app_tags %}<!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+<nav class="row">
+  <div class="nav-wrapper col s12">
+	<a href="{% url 'home' %}" class="brand-logo">
+	Компьютеры</a>
+	<ul class="right hide-on-med-and-down">
+	  <li class="{% if current == "examples" %}active{% endif %}"><a href="{% url 'examples' %}">Примеры</a></li>
+	  <li class="{% if current == "contacts" %}active{% endif %}"><a href="{% url 'contacts' %}">Контакты</a></li>
+	  <li class="{% if current == "about" %}active{% endif %}"><a href="{% url 'about' %}">О проекте</a></li>
+	</ul>
+  </div>
+</nav>
