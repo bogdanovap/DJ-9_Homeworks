@@ -1,0 +1,3 @@
+F:\Work\Netology\DJ-9\2020-05-07_Database 1\databases\work_with_database\obj\Any CPU\Debug\work_with_database.pyproj.CoreCompileInputs.cache
+F:\Work\Netology\DJ-9\2020-05-07_Database 1\databases\work_with_database\bin\Microsoft.PythonTools.WebRole.dll
+F:\Work\Netology\DJ-9\2020-05-07_Database 1\databases\work_with_database\bin\wfastcgi.py
