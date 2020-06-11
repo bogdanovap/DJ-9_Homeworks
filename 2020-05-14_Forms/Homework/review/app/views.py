@@ -15,14 +15,21 @@ def product_list_view(request):
 
     return render(request, template, context)
 
-reviewed_products = []
+
+key_name = 'reviewed_products'
+
 
 def product_view(request, pk):
     template = 'app/product_detail.html'
     product = get_object_or_404(Product, id=pk)
+    if key_name in request.session:
+        reviewed_products = request.session.get(key_name)
+    else:
+        request.session[key_name] = []
+        reviewed_products = []
 
     form = ReviewForm
-    if request.method == 'POST':
+    if request.method == 'POST' and not(product.id in reviewed_products):
         form = ReviewForm(request.POST)
         if form.is_valid():  # All validation rules pass
             r = Review(
@@ -31,15 +38,11 @@ def product_view(request, pk):
             )
             r.save()
             reviewed_products.append(product.id)
-            """
-            if 'reviewed_products' in  request.session:
-                request.session['reviewed_products'].append(product.id)
-            else:
-                request.session['reviewed_products'] = [product.id]
-            """
-            return redirect("product_detail", pk=product.id)
 
-    request.session['reviewed_products'] = reviewed_products
+    request.session[key_name] = reviewed_products
+
+    print(reviewed_products)
+    print(request.session[key_name])
     context = {
         'form': form,
         'product': product
