@@ -1,10 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "istore\\../base.html" %}
+{% load static %}
+
+{% block title %}iStore{% endblock %}
+{% block main %}
+
+    <!-- Example row of columns -->
+    {% if prods_in_order|length > 0 %}
+        <div class="row">
+            <div class="col-lg-6 col-md-9 col-sm-12 order-md-2 mb-4">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted">Ваша корзина</span>
+                    <span class="badge badge-secondary badge-pill">{{ prods_in_order|length }}</span>
+                </h4>
+                <ul class="list-group mb-3">
+                    {% for prod in prods_in_order %}
+                        <li class="list-group-item d-flex justify-content-between lh-condensed">
+                            <div>
+                                <h6 class="my-0">{{ prod.product.name }}</h6>
+                                <small class="text-muted">{{ prod.product.description }}</small>
+                            </div>
+                            <span class="text-muted">{{ prod.quantity }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <form class="card p-2" action="{% url 'buy_all' order.id %}">
+                    <button type="submit" class="btn btn-secondary">Заказать</button>
+                </form>
+            </div>
+        </div>
+    {% else %}
+        {% include 'empty_list.html' with msg='В корзине пока ничего нет!' %}
+    {% endif %}
+
+{% endblock %}

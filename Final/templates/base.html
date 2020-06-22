@@ -14,18 +14,21 @@
 
 <body class="" data-gr-c-s-loaded="true">
 
-    {% include 'navbar.html' %}
-    <hr>
-    {% block main %}
-        {% include 'empty_list.html' with msg='Тут пока ничего нет!'%}
-    {% endblock %}
-     <hr>
+{% include 'navbar.html' %}
 
-    {% include 'footer.html' %}
+<hr>
 
-    <script src="{% static "jquery-3.3.1.slim.min.js" %}"></script>
-    <script src="{% static "popper.min.js" %}"></script>
-    <script src="{% static "bootstrap.min.js" %}"></script>
+{% block main %}
+    {% include 'empty_list.html' with msg='Тут пока ничего нет!' %}
+{% endblock %}
+
+<hr>
+
+{% include 'footer.html' %}
+
+<script src="{% static "jquery-3.3.1.slim.min.js" %}"></script>
+<script src="{% static "popper.min.js" %}"></script>
+<script src="{% static "bootstrap.min.js" %}"></script>
 
 </body>
 </html>

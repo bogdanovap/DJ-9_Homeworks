@@ -12,7 +12,7 @@
         </div>
 
         <div class="container mb-5">
-        <!-- Example row of columns -->
+            <!-- Example row of columns -->
             <div class="row">
                 {% for prod in article.merch.all %}
                     <div class="col-md-4">
@@ -21,11 +21,11 @@
                             <img src="{{ prod.picture }}" alt="{{ prod.name }}" width="180">
                         </a>
 
-                        <form>
+                        <form action="{% url 'add_to_cart' prod.slug %}">
                             <input type="submit" class="btn btn-secondary" value="Добавить в корзину »">
                         </form>
                     </div>
-                {%  endfor %}
+                {% endfor %}
             </div>
         </div> <!-- /container -->
 

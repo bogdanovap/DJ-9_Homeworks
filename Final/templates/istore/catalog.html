@@ -1,10 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "istore\\../base.html" %}
+{% load static %}
+
+{% block title %}iStore{% endblock %}
+{% block main %}
+
+    <!-- Example row of columns -->
+    {% if products|length > 0 %}
+        <div class="container mb-5">
+            <div class="row">
+                {% for prod in products %}
+                    <div class="col-md-4">
+                        <h2>{{ prod.name }}</h2>
+                        <a href="{% url 'product_view' slug=prod.slug %}">
+                            <img src="/{{ prod.picture }}" alt="{{ prod.name }}" width="180">
+                        </a>
+
+                        <form action="{% url 'add_to_cart' prod.slug %}">
+                            <input type="submit" class="btn btn-secondary" value="Добавить в корзину »">
+                        </form>
+                    </div>
+                {% endfor %}
+            </div>
+            {% if prev %}<a href="{{ prev }}">⟵</a>{% endif %}
+            {% if next %}<a href="{{ next }}">⟶</a>{% endif %}
+        </div> <!-- /container -->
+    {% else %}
+        {% include 'empty_list.html' with msg='Тут пока ничего нет!' %}
+    {% endif %}
+
+{% endblock %}
