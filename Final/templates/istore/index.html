@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}iStore{% endblock %}
+{% block main %}
+    {% for article in articles %}
+        <div class="jumbotron">
+            <div class="container">
+                <h1 class="display-4">{{ article.title }}</h1>
+                <p>{{ article.text }}</p>
+            </div>
+        </div>
+
+        <div class="container mb-5">
+        <!-- Example row of columns -->
+            <div class="row">
+                {% for prod in article.merch.all %}
+                    <div class="col-md-4">
+                        <h2>{{ prod.name }}</h2>
+                        <a href="{% url 'product_view' slug=prod.slug %}">
+                            <img src="{{ prod.picture }}" alt="{{ prod.name }}" width="180">
+                        </a>
+
+                        <form>
+                            <input type="submit" class="btn btn-secondary" value="Добавить в корзину »">
+                        </form>
+                    </div>
+                {%  endfor %}
+            </div>
+        </div> <!-- /container -->
+
+    {% endfor %}
+
+
+
+
+{% endblock %}

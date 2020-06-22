@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}iStore{% endblock %}
+{% block main %}
+
+    <div align="center">
+        <h2>Авторизация</h2>
+        <form class="form-signin" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Войти</button>
+        </form>
+    </div>
+
+{% endblock %}
